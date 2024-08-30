@@ -6,7 +6,7 @@ from tkinter import messagebox
 from PIL import ImageTk, Image
 from PIL import *
 import ast
-import contactos 
+#import contactos 
 
 
 
@@ -20,11 +20,12 @@ dir_carpetas = os.path.dirname(__file__)
 img_carpeta = os.path.join(dir_carpetas,"imagenes")
 root.iconbitmap(os.path.join(img_carpeta,"contactos.ico"))
 
+img_carpeta = os.path.join(dir_carpetas,"imagenes")
+root.iconbitmap(os.path.join(img_carpeta,"contactos.ico"))
+
 def singin():#Esta es la funcion de inicio de sesion
     username=user.get()#Tomamos los valores ingresados del usuario
     password=code.get()#Tomamos los valores ingresados de la contraseña
-
-    
 
     file=open('INFO2024_Contactos/Datos_login_Usuario/user_data.txt','r')
     d=file.read()
@@ -38,63 +39,59 @@ def singin():#Esta es la funcion de inicio de sesion
 
 
     if username in r.keys() and password==r[username]:
-       
-      root.destroy()
+        root.destroy()
         
-      
 
-      
-      #======FUNCIONES==============================================
-      def funcion_login():
-         messagebox.showwarning("Login", "Aquí se hace Inicio de Sesión")
+        #======FUNCIONES==============================================
+        def funcion_login():
+            messagebox.showwarning("Login", "Aquí se hace Inicio de Sesión")
 
-      def funcion_logout():
-         ventana.destroy()
-         # messagebox.showwarning("Logout", "Aqui se hace CERRAR sesión")
+        def funcion_logout():
+            ventana.destroy()
+            # messagebox.showwarning("Logout", "Aqui se hace CERRAR sesión")
 
-      def mostrar_contactos():
-         messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
+        def mostrar_contactos():
+            messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
 
-      def funcion_exportar():
-         messagebox.showwarning("Exportar", "Aquí la opción de Exportar los contactos a EXCEL")
+        def funcion_exportar():
+            messagebox.showwarning("Exportar", "Aquí la opción de Exportar los contactos a EXCEL")
 
 
+        #=====PROGRAMA PRINCIPAL===============================================
+        ventana = Tk()
+        lista_contactos = Listbox(ventana)
+        login = False
 
-      #=====PROGRAMA PRINCIPAL===============================================
-      ventana = Tk()
-      lista_contactos = Listbox(ventana)
-      login = False
+        dir_carpetas = os.path.dirname(__file__)
+        img_carpeta = os.path.join(dir_carpetas,"imagenes")
+        ventana.iconbitmap(os.path.join(img_carpeta,"contactos.ico"))
 
-      dir_carpetas = os.path.dirname(__file__)
-      img_carpeta = os.path.join(dir_carpetas,"imagenes")
-      ventana.iconbitmap(os.path.join(img_carpeta,"contactos.ico"))
+        ventana.title('Agenda Personal')
+        ventana.geometry('800x600')
+        ventana.configure(bg="#4B6587")
 
-      ventana.title('Agenda Personal')
-      ventana.geometry('800x600')
-      ventana.configure(bg="#4B6587")
+        img_logo_ppal = ImageTk.PhotoImage(Image.open(os.path.join(img_carpeta,"contactos.png")).resize((100,100)))
+        img_mostrar = Label(image=img_logo_ppal)
+        img_mostrar.place(relx=0.8,rely=0.8)
 
-      img_logo_ppal = ImageTk.PhotoImage(Image.open(os.path.join(img_carpeta,"contactos.png")).resize((100,100)))
-      img_mostrar = Label(image=img_logo_ppal)
-      img_mostrar.place(relx=0.8,rely=0.8)
+        barra_menu = Menu(ventana)
+        ventana.config(menu=barra_menu)
+        menu_principal = Menu(barra_menu)
+        barra_menu.add_cascade(label ='Menú', menu=menu_principal)
+        submenu = Menu(menu_principal)
 
-      barra_menu = Menu(ventana)
-      ventana.config(menu=barra_menu)
-      menu_principal = Menu(barra_menu)
-      barra_menu.add_cascade(label ='Menú', menu=menu_principal)
-      submenu = Menu(menu_principal)
+        if(login):
+            menu_principal.add_cascade(label = 'Login', command=funcion_login)
+        else:
+            menu_principal.add_cascade(label = 'Contactos', menu=submenu)
+            menu_principal.add_cascade(label = 'Logout', command=funcion_logout)
 
-      if(login):
-         menu_principal.add_cascade(label = 'Login', command=funcion_login)
-      else:
-         menu_principal.add_cascade(label = 'Contactos', menu=submenu)
-         menu_principal.add_cascade(label = 'Logout', command=funcion_logout)
+        submenu.add_cascade(label = 'Actualizar Contactos',command=mostrar_contactos)
+        submenu.add_cascade(label = 'Exportar a Excel', command=funcion_exportar) 
 
-      submenu.add_cascade(label = 'Actualizar Contactos',command=mostrar_contactos)
-      submenu.add_cascade(label = 'Exportar a Excel', command=funcion_exportar) 
+        ventana.mainloop()
 
-      ventana.mainloop()
-
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Fin de La Parte del Codigo de contactos @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Fin de La Parte del Codigo de contactos @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
     else:
