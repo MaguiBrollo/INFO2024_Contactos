@@ -1,1 +1,1 @@
-{'Usuario': 'contraseña'}
+{'Usuario':'contrasenia','info':'123456'}
