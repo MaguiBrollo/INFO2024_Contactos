@@ -1,30 +1,17 @@
 #=======IMPORTACIONES=============================================
-
+import os
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
-
-import contactos 
-
-#======FUNCIONES==============================================
-def funcion_login():
-   messagebox.showwarning("Login", "Aquí se hace Inicio de Sesión")
-
-def funcion_logout():
-   messagebox.showwarning("Logout", "Aqui se hace CERRAR sesión")
-
-def mostrar_contactos():
-   messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
-
-def funcion_exportar():
-   messagebox.showwarning("Exportar", "Aquí la opción de Exportar los contactos a EXCEL")
+import ast
+import ventanaPrincipal as VP 
 
 
-
-#=====PROGRAMA PRINCIPAL===============================================
-ventana = tk.Tk()
-lista_contactos = tk.Listbox(ventana)
-login = False
+root = Tk()
+root.title('Login')
+root.geometry('925x500+300+200')
+root.configure(bg="#fff")
+root.resizable(False,False)#Bloque del maximizado
 
 dir_carpetas = os.path.dirname(__file__)
 img_carpeta = os.path.join(dir_carpetas,"imagenes")

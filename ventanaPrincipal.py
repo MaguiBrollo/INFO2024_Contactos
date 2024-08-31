@@ -3,6 +3,7 @@ import os
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
+import exportarExcel as EE 
 
 def ventanaPrincipal():
     #======FUNCIONES==============================================
@@ -17,7 +18,7 @@ def ventanaPrincipal():
          messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
 
       def funcion_exportar():
-         messagebox.showwarning("Exportar", "Aquí la opción de Exportar los contactos a EXCEL")
+         EE.funcion_exportar()
 
 
       #=====PROGRAMA PRINCIPAL===============================================
