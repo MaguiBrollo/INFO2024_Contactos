@@ -4,16 +4,16 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import exportarExcel as EE 
+import salir as SL
 
 def ventanaPrincipal():
     #======FUNCIONES==============================================
       def funcion_login():
          messagebox.showwarning("Login", "Aquí se hace Inicio de Sesión")
 
-      def funcion_logout():
-         messagebox.showwarning("Logout", "Aqui se hace CERRAR sesión")
-         #falta hacer
-
+      def funcion_logout(ventana):
+         SL.salir(ventana)
+       
       def mostrar_contactos():
          messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
 
@@ -46,7 +46,7 @@ def ventanaPrincipal():
 
        
       menu_principal.add_cascade(label = 'Contactos', menu=submenu)
-      menu_principal.add_cascade(label = 'Salir', command=funcion_logout)
+      menu_principal.add_cascade(label = 'Salir', command=lambda: funcion_logout(ventana))
 
       submenu.add_cascade(label = 'Actualizar Contactos',command=mostrar_contactos)
       submenu.add_cascade(label = 'Exportar a Excel', command=funcion_exportar) 
