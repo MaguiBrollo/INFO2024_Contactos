@@ -64,6 +64,8 @@ def singup_command():
 
                 messagebox.showinfo('Registro', 'Registro de cuenta exitosa')
                 windows.destroy()
+                root.destroy()
+                VP.ventanaPrincipal()
 
             except (FileNotFoundError, SyntaxError):# Cambio
                 with open(file_path, 'w') as file:
@@ -72,6 +74,8 @@ def singup_command():
 
                 messagebox.showinfo('Registro', 'Registro de cuenta exitosa')
                 windows.destroy()
+                root.destroy()
+                VP.ventanaPrincipal()
 
     def close_windows():#Para cerrar ventana de inicio de sesion
         windows.destroy()
