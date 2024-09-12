@@ -31,7 +31,7 @@ def singin():#Esta es la funcion de inicio de sesion
 #Parte del donde se ingresa sus archivos
     if username in r.keys() and password==r[username]:
         root.destroy()
-        VP.ventanaPrincipal()
+        VP.ventanaPrincipal(username)
     else:
         messagebox.showerror('Inválido','Usuario o contraseña incorrecta')
 
@@ -65,7 +65,7 @@ def singup_command():
                 messagebox.showinfo('Registro', 'Registro de cuenta exitosa')
                 windows.destroy()
                 root.destroy()
-                VP.ventanaPrincipal()
+                VP.ventanaPrincipal(username)
 
             except (FileNotFoundError, SyntaxError):# Cambio
                 with open(file_path, 'w') as file:
@@ -75,7 +75,7 @@ def singup_command():
                 messagebox.showinfo('Registro', 'Registro de cuenta exitosa')
                 windows.destroy()
                 root.destroy()
-                VP.ventanaPrincipal()
+                VP.ventanaPrincipal(username)
 
     def close_windows():#Para cerrar ventana de inicio de sesion
         windows.destroy()

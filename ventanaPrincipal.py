@@ -6,7 +6,7 @@ from PIL import ImageTk, Image
 import exportarExcel as EE 
 import salir as SL
 
-def ventanaPrincipal():
+def ventanaPrincipal(us):
     #======FUNCIONES==============================================
       def funcion_login():
          messagebox.showwarning("Login", "Aquí se hace Inicio de Sesión")
@@ -33,6 +33,9 @@ def ventanaPrincipal():
       ventana.title('Agenda Personal')
       ventana.geometry('800x600')
       ventana.configure(bg="#4B6587")
+
+      datos_usu=Label(ventana, text="Usuario: "+us, fg='white',bg="#4B6587",font=('Microsoft YaHei UI Ligth',14,'bold'))
+      datos_usu.place(relx=0.1,rely=0.9)
 
       img_logo_ppal = ImageTk.PhotoImage(Image.open(os.path.join(img_carpeta,"contactos.png")).resize((100,100)))
       img_mostrar = Label(image=img_logo_ppal)
