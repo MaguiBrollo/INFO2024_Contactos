@@ -2,9 +2,9 @@
 import os
 from tkinter import *
 from tkinter import messagebox
-from PIL import ImageTk, Image
-import exportarExcel as EE 
+from PIL import ImageTk, Image 
 import salir as SL
+import tabla_de_contactos as TB 
 
 def ventanaPrincipal(us):
     #======FUNCIONES==============================================
@@ -15,10 +15,11 @@ def ventanaPrincipal(us):
          SL.salir(ventana)
        
       def mostrar_contactos():
-         messagebox.showwarning("Contactos", "Aquí se muestra todos los contactos, y los botones Crear/Eliminar/Editar") 
+          TB.tabla_contactos()
 
       def funcion_exportar():
-         EE.funcion_exportar()
+          pass
+         # EE.funcion_exportar()
 
 
       #=====PROGRAMA PRINCIPAL===============================================
@@ -47,11 +48,7 @@ def ventanaPrincipal(us):
       barra_menu.add_cascade(label ='Menú', menu=menu_principal)
       submenu = Menu(menu_principal)
 
-       
-      menu_principal.add_cascade(label = 'Contactos', menu=submenu)
+      menu_principal.add_cascade(label = 'Contactos', command=mostrar_contactos)
       menu_principal.add_cascade(label = 'Salir', command=lambda: funcion_logout(ventana))
-
-      submenu.add_cascade(label = 'Actualizar Contactos',command=mostrar_contactos)
-      submenu.add_cascade(label = 'Exportar a Excel', command=funcion_exportar) 
 
       ventana.mainloop()
