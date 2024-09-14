@@ -48,11 +48,7 @@ def ventanaPrincipal(us):
       barra_menu.add_cascade(label ='Menú', menu=menu_principal)
       submenu = Menu(menu_principal)
 
-       
-      menu_principal.add_cascade(label = 'Contactos', menu=submenu)
+      menu_principal.add_cascade(label = 'Contactos', command=mostrar_contactos)
       menu_principal.add_cascade(label = 'Salir', command=lambda: funcion_logout(ventana))
-
-      submenu.add_cascade(label = 'Actualizar Contactos',command=mostrar_contactos)
-      #submenu.add_cascade(label = 'Exportar a Excel', command=funcion_exportar) 
 
       ventana.mainloop()

@@ -11,7 +11,7 @@ def tabla_contactos():
     # Crear la ventana principal
     ventana = Tk()
     ventana.title("Lista de Contactos")
-    ventana.geometry("600x400")
+    ventana.geometry("800x400")
 
     # Crear el Treeview
     tree = Treeview(ventana, columns=("Nombre", "Apellido", "Telefono", "Email", "Apodo", "Direccion"), show='headings')
